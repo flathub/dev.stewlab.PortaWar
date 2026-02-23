@@ -1,8 +1,8 @@
 app-id: dev.stewlab.PortaWar
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '24.08'
 base: org.godotengine.godot.BaseApp
-base-version: '3.5'
+base-version: '3.5-24.08'
 sdk: org.freedesktop.Sdk
 command: porta-war
 
@@ -13,33 +13,24 @@ finish-args:
   - --device=dri
 
 modules:
-  - name: meta-info
+  - name: porta-war
     buildsystem: simple
     build-commands:
-      - install -Dm644 dev.stewlab.PortaWar.metainfo.xml
-        /app/share/metainfo/dev.stewlab.PortaWar.metainfo.xml
-      - install -Dm644 dev.stewlab.PortaWar.svg
-        /app/share/icons/hicolor/scalable/apps/dev.stewlab.PortaWar.svg
-      - install -Dm644 dev.stewlab.PortaWar.desktop
-        /app/share/applications/dev.stewlab.PortaWar.desktop
+      - install -D porta-war.pck /app/bin/porta-war.pck
+      - install -Dm755 porta-war.sh /app/bin/porta-war
+      - install -Dm644 dev.stewlab.PortaWar.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 dev.stewlab.PortaWar.desktop -t /app/share/applications
+      - install -Dm644 dev.stewlab.PortaWar.svg -t /app/share/icons/hicolor/scalable/apps
     sources:
+      - type: file
+        url: https://github.com/stewlab/flathub/releases/download/v1.6.0/porta-war.pck
+        sha256: 414ad539487f3a2ca3ecd0395438e12c02d72e98b332aaf261d03b2448328d24
       - type: file
         path: dev.stewlab.PortaWar.metainfo.xml
       - type: file
         path: dev.stewlab.PortaWar.desktop
       - type: file
         path: dev.stewlab.PortaWar.svg
-        
-  - name: porta-war
-    buildsystem: simple
-    build-commands:
-      - install -D porta-war.pck /app/bin/porta-war.pck
-      - install -Dm755 porta-war.sh /app/bin/porta-war
-    sources:
-      - type: file
-        url: https://github.com/stewlab/flathub/releases/download/v1.6.0/porta-war.pck
-        sha256: 414ad539487f3a2ca3ecd0395438e12c02d72e98b332aaf261d03b2448328d24
-        dest-filename: porta-war.pck
       - type: script
         dest-filename: porta-war.sh
         commands:
