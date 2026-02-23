@@ -1,11 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-
 Name=Porta War
 Comment=A shmup with a handheld theme
 Categories=Game;ArcadeGame;
-
 Icon=dev.stewlab.PortaWar
 Exec=porta-war
 Terminal=false
